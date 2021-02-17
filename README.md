@@ -1,7 +1,7 @@
-# Gradient Background Generator
+# Gradient-BackGround--Generator
 
-* Generates a left-to-right gradient based on the colour options selected.
-* Displays the corresponding CSS selector of the gradient.
+* generate left-to-right--gradient based on colour-options selected
+* disPlays corresponding CSS-selector for gradient
 
 ## Stack
 

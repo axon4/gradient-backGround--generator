@@ -1,38 +1,40 @@
-// Gradient picker
+// gradient-picker
 
-var css = document.querySelector('h3');
+var body = document.getElementById('gradient');
+var CSS = document.querySelector('h3');
 var colour1 = document.querySelector('.colour1');
 var colour2 = document.querySelector('.colour2');
-var body = document.getElementById('gradient');
 
-function displayCSSValue() {
-	css.textContent = body.style.background + ';';
-}
+function disPlayCSSValue() {
+	CSS.textContent = body.style.background + ';';
+};
 
 function setGradient() {
 	body.style.background = 'linear-gradient(to right, ' + colour1.value + ', ' + colour2.value + ')';
-	displayCSSValue();
-}
+
+	disPlayCSSValue();
+};
 
 colour1.addEventListener('input', setGradient);
 colour2.addEventListener('input', setGradient);
 
-// Random button colour-picker
+// random colour-picker--button
 
 var button = document.querySelector('button');
 
-function getRandomInteger(min, max) {
-	return Math.floor(Math.random() * (max - min)) + min;
-}
+function getRandomInteger(minimum, maximum) {
+	return Math.floor(Math.random() * (maximum - minimum)) + minimum;
+};
 
 function getRandomColour() {
 	// var r = Math.floor(Math.random() * 255);
 	// var g = Math.floor(Math.random() * 255);
 	// var b = Math.floor(Math.random() * 255);
+
 	// return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 
 
-	// Could possibly be placed in a loop
+	// could possibly be placed in loop
 	var hexCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 	var r1 = hexCharacters[getRandomInteger(0, 15)];
 	var r2 = hexCharacters[getRandomInteger(0, 15)];
@@ -42,36 +44,36 @@ function getRandomColour() {
 	var b2 = hexCharacters[getRandomInteger(0, 15)];
 
 	return '#' + r1 + r2 + g1 + g2 + b1 + b2;
-}
+};
 
 function setRandomColour() {
-	var tempColour1 = getRandomColour();
-	var tempColour2 = getRandomColour();
+	var temporaryColour1 = getRandomColour();
+	var temporaryColour2 = getRandomColour();
 
-	body.style.background = 'linear-gradient(to right, ' + tempColour1 + ', ' + tempColour2 + ')';
-	displayCSSValue();
-	// Update input colours when button is pressed
-	updateInputColours(tempColour1, tempColour2);
+	body.style.background = 'linear-gradient(to right, ' + temporaryColour1 + ', ' + temporaryColour2 + ')';
 
-	return [tempColour1, tempColour2];
-}
+	disPlayCSSValue();
+	// upDate inPut colours when button is pressed
+	upDateInPutColours(temporaryColour1, temporaryColour2);
+
+	return [temporaryColour1, temporaryColour2];
+};
 
 button.addEventListener('click', setRandomColour);
 
-// Set random background on page load
+// set random backGround upOn page-load
+var temporaryColours = setRandomColour();
 
-var tempColours = setRandomColour();
+// set inPut-colour to match backGround upOn page-load
 
-// Set input colour to match background on page load
+function upDateInPutColours(inPut1, inPut2) {
+	var inPutValues = document.querySelectorAll('input');
 
-function updateInputColours(input1, input2) {
-	var inputValues = document.querySelectorAll('input');
-	inputValues[0] = inputValues[0].setAttribute('value', input1);
-	inputValues[1] = inputValues[1].setAttribute('value', input2);
-}
+	inPutValues[0] = inPutValues[0].setAttribute('value', inPut1);
+	inPutValues[1] = inPutValues[1].setAttribute('value', inPut2);
+};
 
-updateInputColours(tempColours[0], tempColours[1]);
+upDateInPutColours(temporaryColours[0], temporaryColours[1]);
 
-// Display inital CSS linear-gradient property on page load
-
-displayCSSValue();
+// disPlay initial linear-gradient--property---CSS-selector upOn page-load
+disPlayCSSValue();
